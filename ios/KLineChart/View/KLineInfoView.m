@@ -78,11 +78,11 @@
     NSString *symbol = @"-";
     if(upDown > 0) {
         symbol = @"+";
-        self.IncreaseLabel.textColor = ChartColors_upColor;
-        self.amplitudeLabel.textColor = ChartColors_upColor;
+        self.IncreaseLabel.textColor = [KLineStateManager manager].increaseColor;
+        self.amplitudeLabel.textColor = [KLineStateManager manager].increaseColor;
     } else {
-        self.IncreaseLabel.textColor = ChartColors_dnColor;
-        self.amplitudeLabel.textColor = ChartColors_dnColor;
+        self.IncreaseLabel.textColor = [KLineStateManager manager].decreaseColor;
+        self.amplitudeLabel.textColor = [KLineStateManager manager].decreaseColor;
     }
     CGFloat upDownPercent = 0.0;
     if (model.open != 0) {

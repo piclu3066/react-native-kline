@@ -13,12 +13,12 @@
   //背景颜色
 #define ChartColors_bgColor   Color(0xFF18181A)
 #define ChartColors_kLineColor   Color(0xFF18181A)
-#define ChartColors_gridColor   Color(0xFF2F2F31)
+#define ChartColors_gridColor   Color(0x30F9FAF2)
 #define ChartColors_ma5Color   Color(0xffC9B885)
 #define ChartColors_ma10Color   Color(0xff6CB0A6)
 #define ChartColors_ma30Color   Color(0xff9979C6)
-#define ChartColors_upColor   Color(0xff4DAA90)
-#define ChartColors_dnColor   Color(0xffC15466)
+#define ChartColors_upColor   Color(0xffDF1A3A)
+#define ChartColors_dnColor   Color(0xff23915C)
 #define ChartColors_volColor   Color(0xff4729AE)
 
 #define ChartColors_macdColor   Color(0xff4729AE)

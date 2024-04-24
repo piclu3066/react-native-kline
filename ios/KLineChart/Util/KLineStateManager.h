@@ -29,6 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,strong) NSArray *locales;
 
+@property(nonatomic,strong) UIColor *increaseColor;//K线上涨颜色
+
+@property(nonatomic,strong) UIColor *decreaseColor;//k线下跌颜色
+
+@property(nonatomic,strong) UIColor *ma1Color;//m5颜色
+
+@property(nonatomic,strong) UIColor *ma2Color;//m10颜色
+
+@property(nonatomic,strong) UIColor *ma3Color;//m30颜色
 @end
 
 NS_ASSUME_NONNULL_END

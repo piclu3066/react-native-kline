@@ -25,6 +25,7 @@
     [self setIncreaseColor:_increaseColor];
     [self setDecreaseColor:_decreaseColor];
     [_chartView setMainBackgroundColor:_mainBackgroundColor];
+    [self initColors];
     [self addSubview:_chartView];
 }
 
@@ -227,10 +228,26 @@
   }
 }
 
+//设置主图背景色
 - (void)setMainBackgroundColor:(NSString *)mainBackgroundColor {
     _mainBackgroundColor = mainBackgroundColor;
     [_chartView setMainBackgroundColor:_mainBackgroundColor];
 }
 
+//初始化相关色彩
+-(void) initColors {
+    //设置上涨颜色
+    [KLineStateManager manager].increaseColor = _increaseColor == nil ? ChartColors_upColor :[UIColor colorWithHexString:_increaseColor];
+    //下跌颜色
+    [KLineStateManager manager].decreaseColor = _decreaseColor == nil ? ChartColors_dnColor :[UIColor colorWithHexString:_decreaseColor];
+    //m5颜色
+    [KLineStateManager manager].ma1Color = _ma1Color == nil ? ChartColors_ma5Color :[UIColor colorWithHexString:_ma1Color];
+    //m10颜色
+    [KLineStateManager manager].ma2Color = _ma2Color == nil ? ChartColors_ma10Color :[UIColor colorWithHexString:_ma2Color];
+    //m30颜色
+    [KLineStateManager manager].ma3Color = _ma3Color == nil ? ChartColors_ma30Color :[UIColor colorWithHexString:_ma3Color];
+
+
+}
 
 @end

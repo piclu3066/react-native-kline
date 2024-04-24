@@ -110,26 +110,26 @@
 
 - (void)drawMaLine:(CGContextRef)context lastPoit:(KLineModel *)lastPoint curPoint:(KLineModel *)curPoint curX:(CGFloat)curX {
     if(curPoint.MA5Price != 0) {
-        [self drawLine:context lastValue:lastPoint.MA5Price curValue:curPoint.MA5Price curX:curX color:ChartColors_ma5Color];
+        [self drawLine:context lastValue:lastPoint.MA5Price curValue:curPoint.MA5Price curX:curX color:[KLineStateManager manager].ma1Color ];
     }
     if(curPoint.MA10Price != 0) {
-           [self drawLine:context lastValue:lastPoint.MA10Price curValue:curPoint.MA10Price curX:curX color:ChartColors_ma10Color];
+           [self drawLine:context lastValue:lastPoint.MA10Price curValue:curPoint.MA10Price curX:curX color:[KLineStateManager manager].ma2Color];
     }
     if(curPoint.MA30Price != 0) {
-           [self drawLine:context lastValue:lastPoint.MA30Price curValue:curPoint.MA30Price curX:curX color:ChartColors_ma30Color];
+           [self drawLine:context lastValue:lastPoint.MA30Price curValue:curPoint.MA30Price curX:curX color:[KLineStateManager manager].ma3Color];
     }
 }
 
 
 - (void)drawBollLine:(CGContextRef)context lastPoit:(KLineModel *)lastPoint curPoint:(KLineModel *)curPoint curX:(CGFloat)curX {
     if(curPoint.up != 0) {
-        [self drawLine:context lastValue:lastPoint.up curValue:curPoint.up curX:curX color:ChartColors_ma5Color];
+        [self drawLine:context lastValue:lastPoint.up curValue:curPoint.up curX:curX color:[KLineStateManager manager].ma1Color ];
     }
     if(curPoint.mb != 0) {
-           [self drawLine:context lastValue:lastPoint.mb curValue:curPoint.mb curX:curX color:ChartColors_ma10Color];
+           [self drawLine:context lastValue:lastPoint.mb curValue:curPoint.mb curX:curX color:[KLineStateManager manager].ma2Color];
     }
     if(curPoint.dn != 0) {
-           [self drawLine:context lastValue:lastPoint.dn curValue:curPoint.dn curX:curX color:ChartColors_ma30Color];
+           [self drawLine:context lastValue:lastPoint.dn curValue:curPoint.dn curX:curX color:[KLineStateManager manager].ma3Color];
     }
 }
 
@@ -139,10 +139,10 @@
     CGFloat low = [self getY:curPoint.low];
     CGFloat open = [self getY:curPoint.open];
     CGFloat close = [self getY:curPoint.close];
-    UIColor *color = ChartColors_dnColor;
+    UIColor *color = [KLineStateManager manager].decreaseColor;
     
     if(open > close) {
-        color = ChartColors_upColor;
+        color = [KLineStateManager manager].increaseColor;//ChartColors_upColor;
     }
     
     CGContextSetStrokeColorWithColor(context, color.CGColor);
@@ -165,19 +165,19 @@
     if(curPoint.MA5Price != 0) {
         NSString *fixedStr = [NSString stringWithFormat:@"%@%@f", @"MA5:%.", fixed];
         NSString *str = [NSString stringWithFormat:fixedStr,curPoint.MA5Price];
-        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:[str stringByAppendingString:@"    "] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:ChartStyle_defaultTextSize],NSForegroundColorAttributeName: ChartColors_ma5Color}];
+        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:[str stringByAppendingString:@"    "] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:ChartStyle_defaultTextSize],NSForegroundColorAttributeName: [KLineStateManager manager].ma1Color }];
         [topAttributeText appendAttributedString:attr];
     }
     if(curPoint.MA10Price != 0) {
         NSString *fixedStr = [NSString stringWithFormat:@"%@%@f", @"MA10:%.", fixed];
         NSString *str = [NSString stringWithFormat:fixedStr,curPoint.MA10Price];
-        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:[str stringByAppendingString:@"    "] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:ChartStyle_defaultTextSize],NSForegroundColorAttributeName: ChartColors_ma10Color}];
+        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:[str stringByAppendingString:@"    "] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:ChartStyle_defaultTextSize],NSForegroundColorAttributeName: [KLineStateManager manager].ma2Color}];
         [topAttributeText appendAttributedString:attr];
     }
     if(curPoint.MA30Price != 0) {
         NSString *fixedStr = [NSString stringWithFormat:@"%@%@f", @"MA30:%.", fixed];
         NSString *str = [NSString stringWithFormat:fixedStr,curPoint.MA30Price];
-        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:[str stringByAppendingString:@"    "] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:ChartStyle_defaultTextSize],NSForegroundColorAttributeName: ChartColors_ma30Color}];
+        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:[str stringByAppendingString:@"    "] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:ChartStyle_defaultTextSize],NSForegroundColorAttributeName: [KLineStateManager manager].ma3Color}];
         [topAttributeText appendAttributedString:attr];
     }
     [topAttributeText drawAtPoint:CGPointMake(5, 6)];

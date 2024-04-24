@@ -9,6 +9,7 @@
 #import "VolChartRenderer.h"
 #import "ChartStyle.h"
 #import "NSString+Rect.h"
+#import "KLineStateManager.h"
 
 @implementation VolChartRenderer
 
@@ -29,10 +30,10 @@
     [self drawVolChat:context curPoint:curPoint curX:curX];
     if(lastPoint != nil){
         if(curPoint.MA5Volume != 0) {
-            [self drawLine:context lastValue:lastPoint.MA5Volume curValue:curPoint.MA5Volume curX:curX color:ChartColors_ma5Color];
+            [self drawLine:context lastValue:lastPoint.MA5Volume curValue:curPoint.MA5Volume curX:curX color:[KLineStateManager manager].ma1Color ];
         }
         if(curPoint.MA10Volume != 0) {
-            [self drawLine:context lastValue:lastPoint.MA10Volume curValue:curPoint.MA10Volume curX:curX color:ChartColors_ma10Color];
+            [self drawLine:context lastValue:lastPoint.MA10Volume curValue:curPoint.MA10Volume curX:curX color:[KLineStateManager manager].ma2Color];
         }
     }
 }
@@ -41,9 +42,9 @@
     CGFloat top = [self getY:curPoint.vol];
     CGContextSetLineWidth(context, self.candleWidth);
     if(curPoint.close > curPoint.open) {
-        CGContextSetStrokeColorWithColor(context, ChartColors_upColor.CGColor);
+        CGContextSetStrokeColorWithColor(context, [KLineStateManager manager].increaseColor.CGColor);
     } else {
-        CGContextSetStrokeColorWithColor(context, ChartColors_dnColor.CGColor);
+        CGContextSetStrokeColorWithColor(context, [KLineStateManager manager].decreaseColor.CGColor);
     }
     CGContextMoveToPoint(context, curX, CGRectGetMaxY(self.chartRect));
     CGContextAddLineToPoint(context, curX, top);
@@ -59,12 +60,12 @@
     }
     {
         NSString *str = [NSString stringWithFormat:@"MA5:%@    ", [self volFormat:curPoint.MA5Volume]];
-        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:str attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:ChartStyle_defaultTextSize],NSForegroundColorAttributeName: ChartColors_ma5Color}];
+        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:str attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:ChartStyle_defaultTextSize],NSForegroundColorAttributeName: [KLineStateManager manager].ma1Color }];
         [topAttributeText appendAttributedString:attr];
     }
    {
         NSString *str = [NSString stringWithFormat:@"MA10:%@   ",[self volFormat:curPoint.MA10Volume]];
-        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:str attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:ChartStyle_defaultTextSize],NSForegroundColorAttributeName: ChartColors_ma10Color}];
+        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:str attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:ChartStyle_defaultTextSize],NSForegroundColorAttributeName: [KLineStateManager manager].ma2Color}];
         [topAttributeText appendAttributedString:attr];
     }
     [topAttributeText drawAtPoint:CGPointMake(5, CGRectGetMinY(self.chartRect))];

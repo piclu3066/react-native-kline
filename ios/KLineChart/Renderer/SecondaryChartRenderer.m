@@ -81,9 +81,9 @@
     CGFloat maxdY = [self getY:curPoint.macd];
     CGFloat zeroy = [self getY:0];
     if(curPoint.macd > 0) {
-         CGContextSetStrokeColorWithColor(context, ChartColors_upColor.CGColor);
+        CGContextSetStrokeColorWithColor(context, [KLineStateManager manager].increaseColor.CGColor);
     } else {
-        CGContextSetStrokeColorWithColor(context, ChartColors_dnColor.CGColor);
+        CGContextSetStrokeColorWithColor(context, [KLineStateManager manager].decreaseColor.CGColor);
     }
     CGContextSetLineWidth(context, self.mMACDWidth);
     CGContextMoveToPoint(context, curX, maxdY);
