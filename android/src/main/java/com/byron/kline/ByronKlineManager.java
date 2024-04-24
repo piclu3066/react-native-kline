@@ -607,7 +607,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
                 new TypeToken<List<KChartBean>>() {
                 }.getType()
         );
-        _adapter.resetData(list, false);
+        _adapter.resetData(list, true);
     }
 
     @ReactProp(name = "locales")

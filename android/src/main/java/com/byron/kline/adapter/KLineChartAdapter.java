@@ -112,7 +112,7 @@ public class KLineChartAdapter<T extends KLineEntity> extends BaseKLineChartAdap
      * @param data K线数据
      */
     public void resetData(List<T> data) {
-        resetData(data, false);
+        resetData(data, true);
     }
 
     /**
