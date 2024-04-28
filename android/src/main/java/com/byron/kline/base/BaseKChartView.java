@@ -455,7 +455,10 @@ public abstract class BaseKChartView extends ScrollAndScaleView {
                     changeTranslated(getMaxTranslate());
                 }
             } else if (!isAnimationLast) {
-                changeTranslated(getMinTranslate());
+                //更新数据不用位移到最后，添加新数据再进行位移
+                if(dataCount != currentCount) {
+                    changeTranslated(getMinTranslate());
+                }
             }
 
             //再次开启动画
