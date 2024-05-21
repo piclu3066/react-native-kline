@@ -22,7 +22,7 @@ public class DateFormatter implements IDateTimeFormatter {
     public String format(Date date) {
         if (null != date) {
             if (period < 60) {
-                return DateUtil.HHmmTimeFormat.format(date);
+                return DateUtil.MMddHHmmTimeFormat.format(date);
             } else if (period < 60 * 24) {
                 return DateUtil.MMddHHmmTimeFormat.format(date);
             } else  {
