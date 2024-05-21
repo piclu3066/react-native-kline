@@ -18,7 +18,7 @@ public class DateUtil {
     @SuppressLint("SimpleDateFormat")
     public static SimpleDateFormat longTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     @SuppressLint("SimpleDateFormat")
-    public static SimpleDateFormat MMddHHmmTimeFormat = new SimpleDateFormat("MM/dd HH:mm");
+    public static SimpleDateFormat MMddHHmmTimeFormat = new SimpleDateFormat("MM-dd HH:mm");
     @SuppressLint("SimpleDateFormat")
     public static SimpleDateFormat HHmmTimeFormat = new SimpleDateFormat("HH:mm");
     @SuppressLint("SimpleDateFormat")
