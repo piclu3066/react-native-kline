@@ -24,7 +24,7 @@ public class DateFormatter implements IDateTimeFormatter {
             if (period < 60) {
                 return DateUtil.MMddHHmmTimeFormat.format(date);
             } else if (period < 60 * 24) {
-                return DateUtil.MMddHHmmTimeFormat.format(date);
+                return DateUtil.MMddTimeFormat.format(date);
             } else  {
                 return DateUtil.yyyyMMddFormat.format(date);
             }

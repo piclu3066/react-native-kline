@@ -20,6 +20,8 @@ public class DateUtil {
     @SuppressLint("SimpleDateFormat")
     public static SimpleDateFormat MMddHHmmTimeFormat = new SimpleDateFormat("MM-dd HH:mm");
     @SuppressLint("SimpleDateFormat")
+    public static SimpleDateFormat MMddTimeFormat = new SimpleDateFormat("MM-dd");
+    @SuppressLint("SimpleDateFormat")
     public static SimpleDateFormat HHmmTimeFormat = new SimpleDateFormat("HH:mm");
     @SuppressLint("SimpleDateFormat")
     public static SimpleDateFormat yyyyMMddFormat = new SimpleDateFormat("yyyy-MM-dd");
