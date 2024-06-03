@@ -48,6 +48,8 @@ public abstract class ScrollAndScaleView extends RelativeLayout implements
 
     private boolean isScaleEnable = true;
 
+    private float offsetY = 0f;
+
     public ScrollAndScaleView(Context context) {
         super(context);
         init();
@@ -80,6 +82,9 @@ public abstract class ScrollAndScaleView extends RelativeLayout implements
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 getParent().requestDisallowInterceptTouchEvent(false);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                getParent().requestDisallowInterceptTouchEvent(offsetY>30 ? false :true);
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -130,6 +135,8 @@ public abstract class ScrollAndScaleView extends RelativeLayout implements
             showSelected = false;
             isTapShow = false;
         }
+        offsetY = Math.abs(distanceY);
+        Log.d("TAG", "onScroll: "+distanceY);
         if (!showSelected && !isMultipleTouch() && isScrollEnable()) {
             scrollBy(Math.round(distanceX), 0);
             return true;

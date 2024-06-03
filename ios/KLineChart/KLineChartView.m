@@ -10,6 +10,7 @@
 #import "ChartStyle.h"
 #import "KLinePainterView.h"
 #import "KLineInfoView.h"
+#import "DirectionPanGestureRecognizer.h"
 
 @interface KLineChartView()
 @property(nonatomic,strong) KLinePainterView *painterView;
@@ -125,7 +126,9 @@
             }
         };
       // 拖动
-        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragKlineEvent:)];
+//        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragKlineEvent:)];
+        DirectionPanGestureRecognizer *panGesture = [[DirectionPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragKlineEvent:)];
+        panGesture.direction = DirectionPanGestureRecognizerHorizontal;
       // 长按
         UILongPressGestureRecognizer *longGresture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressKlineEvent:)];
       // 捏合
