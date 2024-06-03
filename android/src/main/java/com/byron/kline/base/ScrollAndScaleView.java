@@ -136,7 +136,6 @@ public abstract class ScrollAndScaleView extends RelativeLayout implements
             isTapShow = false;
         }
         offsetY = Math.abs(distanceY);
-        Log.d("TAG", "onScroll: "+distanceY);
         if (!showSelected && !isMultipleTouch() && isScrollEnable()) {
             scrollBy(Math.round(distanceX), 0);
             return true;
